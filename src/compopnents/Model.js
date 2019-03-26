@@ -76,9 +76,10 @@ class FullWidthTabs extends React.Component {
 
         const icao = this.props.title;
         const startTime = this.subtractMin(event.target.value);
+        console.log("StartTime: "+startTime);
         const endTime = this.subtractMin(0);
-        const arrurl = 'https://opensky-network.org/api/flights/arrival?airport='+icao+'&begin='+startTime+'&end='+endTime+'';
-        //const arrurl = "https://opensky-network.org/api/flights/arrival?airport=EDDF&begin=1517227200&end=1517230800";
+        const arrurl = 'https://opensky-network.org/api/flights/arrival?airport='+icao+'&begin='+startTime+'&end='+endTime;
+        //const arrurl = "https://opensky-network.org/api/flights/arrival?airport=EDDF&begin=1517227200&end="+endTime;
         axios.get(arrurl)
                     .then(response => {
                         const updateArrivals = response.data;
@@ -90,7 +91,7 @@ class FullWidthTabs extends React.Component {
                         this.setState({ArrError:true});
                     });
         
-         const depurl = 'https://opensky-network.org/api/flights/arrival?airport='+icao+'&begin='+startTime+'&end='+endTime+'';
+         const depurl = 'https://opensky-network.org/api/flights/arrival?airport='+icao+'&begin='+startTime+'&end='+endTime;
          //const depurl = "https://opensky-network.org/api/flights/departure?airport=EDDF&begin=1517227200&end=1517230800";      
          axios.get(depurl)
                     .then(response => {
@@ -140,7 +141,7 @@ class FullWidthTabs extends React.Component {
 
     //Departure
     let departList;
-     if(!this.state.ArrError){
+     if(!this.state.DepartError){
       departList = this.state.departures.map(row => (
         <TableRow key={row.icao24}>
           <TableCell align="right" component="th" scope="row">
@@ -218,8 +219,9 @@ class FullWidthTabs extends React.Component {
           >
             <option value="" />
             <option value={10}>10</option>
-            <option value={20}>20</option>
-            <option value={30}>30</option>
+            <option value={1000}>1000</option>
+            <option value={1500}>1500</option>
+            <option value={2000}>2000</option>
           </Select>
         </FormControl>
       </div>
