@@ -1,4 +1,3 @@
-# OpenSky-MavenCode-Demo
 ## Project Description
 <br>
 • Create responsive website by using React.js and Material UI
@@ -9,5 +8,9 @@
 <br>
 • Get the last x minutes arrival and departure flights information from different airports
 <br>
+[Demo](https://opensky-mavencode-demo.herokuapp.com/login)
+user:demo
+<br>
+password:demo
 
 
